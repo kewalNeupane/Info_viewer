@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Friends Info Viewer</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #e0e0e0;
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      text-align: center;
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      border-radius: 6px;
+      border: none;
+      font-size: 16px;
+    }
+    input {
+      width: 250px;
+      background-color: #1e1e1e;
+      color: #e0e0e0;
+    }
+    button {
+      background-color: #03dac5;
+      color: #000;
+      cursor: pointer;
+    }
+    .card {
+      background-color: #1e1e1e;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #03dac5;
+      display: inline-block;
+      text-align: left;
+    }
+    img {
+      width: 100px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🔍 Friend Info Viewer</h1>
+  <input type="text" id="searchInput" placeholder="Enter friend's name" />
+  <button onclick="searchFriend()">Submit</button>
+
+  <div id="result"></div>
+
+  <script>
+    const friendsData = {
+      "elon bhujel": { birthday: "2064/04/16", phone: "984-9504830", address: "Mechinagar -1, Gadagalli, Jhapa (Near Ward 1)", feature: "Gym Boy(Bodybuilder)", photo: "Elon.jpg" },
+      "sovit ghising": { birthday: "2064/04/17", phone: "976-2909210", address: "Mechinagar 1, Jhapa (Bhim sir ko dokan mastira)", feature: "Comedian+ Gangster", photo: "Sovit.jpg" },
+      "sugam subedi": { birthday: "2064/12/20", phone: "980-6032529", address: "Mechinagar 04, Vrikuti", feature: "Mechinagar Topper", photo: "Sugam.jpg" },
+      "prakhyat dulal": { birthday: "2008/02/27", phone: "986-4593512", address: "Mechinagar 2, Boudhamode", feature: "School College topper (especially chem)", photo: "Prakhyat.jpg" },
+      "biraj newpane": { birthday: "2008/12/18", phone: "974-9918014", address: "Mechinagar 02, Boudhamode", feature: "Topper+ Batsman+ Bowler+ WK", photo: "Beraj.jpg" },
+      "ankit acharya": { birthday: "2008/04/04", phone: "976-7766991", address: "Mechinagar 01, Mechidangi", feature: "Padandass", photo: "Ankit.jpg" },
+      "sambhidhan adhikari": { birthday: "2064/12/28", phone: "9706863524", address: "Bahundangi, Jhapa", feature: "Doctor Saheb", photo: "Sambhidhan.jpg" },
+      "anush khanal": { birthday: "2008/10/04", phone: "9862683985", address: "Mechinagar 10, Dhulabari,Jhapa", feature: "Arm wrestler", photo: "Anush.jpg" },
+      "aryan adhikari": { birthday: "2008/05/04", phone: "Facebook: Aryan Adhikari", address: "Rong-- ,Salakpur", feature: "Padandass (secretly)", photo: "Aryan.jpg" },
+      "kewal neupane": { birthday: "2009/08/02 ≈ 2066/04/18", phone: "9763516736", address: "Mechinagar1,Tiring Jhapa", feature: "Good at Nothing", photo: "Kewal.jpg" },
+      "parbati neupane": { birthday: "2045/04/13", phone: "9810085513", address: "Mechinagar1, Tiring, Jhapa", feature: "Loving and Caring", photo: "Parbati.jpg" },
+      "keshab neupane": { birthday: "2036/08/11", phone: "9742502201", address: "Mechinagar1, Tiring,Jhapa", feature: "Loving and Caring", photo: "Keshab.jpg" },
+      "krisha neupane": { birthday: "2072/02/04", phone: "Facebook: Krisha Neupane", address: "Mechinagar 1, Tiring, Jhapa", feature: "Loving but annoying", photo: "Krisha.jpg" },
+      "tilija neupane": { birthday: "2060/08/07", phone: "9825921448", address: "Mechinagar 1, Tiring, Jhapa", feature: "Humble", photo: "Tilija.jpg" },
+      "saksham gautam": { birthday: "2008/00/00", phone: "981-7930569", address: "Mechinagar, Ittabhatta, Jhapa", feature: "Topper", photo: "Saksham.jpg" }
+    };
+
+    function searchFriend() {
+      const name = document.getElementById("searchInput").value.toLowerCase().trim();
+      const data = friendsData[name];
+      const resultDiv = document.getElementById("result");
+
+      if (data) {
+        resultDiv.innerHTML = `
+          <div class="card">
+            <img src="${data.photo}" alt="${name}'s photo" />
+            <h2>${name.charAt(0).toUpperCase() + name.slice(1)}</h2>
+            <p><strong>Birthday:</strong> ${data.birthday}</p>
+            <p><strong>Phone:</strong> ${data.phone}</p>
+            <p><strong>Address:</strong> ${data.address}</p>
+            <p><strong>Special Feature:</strong> ${data.feature}</p>
+          </div>
+        `;
+      } else {
+        resultDiv.innerHTML = `<p style="color: #ff5252;">Friend not found 😢</p>`;
+      }
+    }
+  </script>
+</body>
+</html>
